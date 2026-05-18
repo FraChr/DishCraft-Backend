@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DishCraft-Api", "DishCraft-Api\DishCraft-Api.csproj", "{1BF400DF-2F01-4261-BE18-D1FFFEDC4C2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{155E8854-569E-4245-831B-E800EDF042A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{0BFDE104-87D7-4D1C-B3D2-3892A00D40CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BF400DF-2F01-4261-BE18-D1FFFEDC4C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BF400DF-2F01-4261-BE18-D1FFFEDC4C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BF400DF-2F01-4261-BE18-D1FFFEDC4C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BF400DF-2F01-4261-BE18-D1FFFEDC4C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{155E8854-569E-4245-831B-E800EDF042A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{155E8854-569E-4245-831B-E800EDF042A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{155E8854-569E-4245-831B-E800EDF042A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{155E8854-569E-4245-831B-E800EDF042A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BFDE104-87D7-4D1C-B3D2-3892A00D40CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BFDE104-87D7-4D1C-B3D2-3892A00D40CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BFDE104-87D7-4D1C-B3D2-3892A00D40CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BFDE104-87D7-4D1C-B3D2-3892A00D40CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
