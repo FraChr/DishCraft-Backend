@@ -1,3 +1,4 @@
+using DishCraft_Api.Extensions;
 using DishCraft.Domain.Interfaces;
 using DishCraft.Domain.Model;
 using DishCraft.Infrastructure;
@@ -13,16 +14,12 @@ public class Program
     public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
-        builder.Services.AddDbContext<Context>(options => 
-            options.UseNpgsql(
-                builder.Configuration.GetConnectionString("DefaultConnection")));
         
-        builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
-
-        builder.Services.AddScoped<RecipeService>();
-        builder.Services.AddScoped<DbSeeder>();
-        builder.Services.AddScoped<JsonSeeder>();
+        builder.Services
+            .AddDatabase(builder.Configuration)
+            .AddRepositories()
+            .AddServices()
+            .AddSeeders();
 
         // Add services to the container.
         builder.Services.AddAuthorization();
@@ -68,13 +65,13 @@ public class Program
                         
                         RecipeTags = new List<RecipeTag>
                         {
-                            new RecipeTag { TagId = tag1.Id, },
-                            new RecipeTag { TagId = tag2.Id, }
+                            new() { TagId = tag1.Id, },
+                            new() { TagId = tag2.Id, }
                         },
                         
                         RecipeAllergens = new List<RecipeAllergen>
                         {
-                            new RecipeAllergen { AllergenId = allergen.Id, },
+                            new() { AllergenId = allergen.Id, },
                         },
                         
                     }
