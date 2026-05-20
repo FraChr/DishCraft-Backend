@@ -1,0 +1,26 @@
+﻿[
+  {
+    "Code": "Kg",
+    "Name": "Kilogram"
+  },
+  {
+    "Code": "Ts",
+    "Name": "Teaspoon"
+  },
+  {
+    "Code": "Tbs",
+    "Name": "Tablespoon"
+  },
+  {
+    "Code": "G",
+    "Name": "Gram"
+  },
+  {
+    "Code": "Dl",
+    "Name": "Deciliters"
+  },
+  {
+    "Code": "Ml",
+    "Name": "Milliliters"
+  }
+]

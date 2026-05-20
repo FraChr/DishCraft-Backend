@@ -1,0 +1,35 @@
+﻿[
+  {
+    "Name": "Vegan"
+  },
+  {
+    "Name": "Vegetarian" 
+  },
+  {
+    "Name": "Quick"
+  },
+  {
+    "Name": "High Protein"
+  },
+  {
+    "Name": "Breakfast"
+  },
+  {
+    "Name": "Dinner"
+  },
+  {
+    "Name": "Lunch"
+  },
+  {
+    "Name": "Seafood"
+  },
+  {
+    "Name": "Chicken"
+  },
+  {
+    "Name": "Beef"
+  },
+  {
+    "Name": "Dessert"
+  }
+]

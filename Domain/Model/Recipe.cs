@@ -12,9 +12,9 @@ public class Recipe
     
     public ICollection<RecipeAllergen> RecipeAllergens { get; set; }
     
-    public ICollection<RecipeTag> Tags { get; set; }
+    public ICollection<RecipeTag> RecipeTags { get; set; }
     
-    public ICollection<RecipeIngredient> Ingredients { get; set; }
+    public ICollection<RecipeIngredient> RecipeIngredients { get; set; }
 
     public ICollection<RecipeNutrition> RecipeNutritions { get; set; }
 }
