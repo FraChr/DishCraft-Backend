@@ -1,8 +1,6 @@
 using DishCraft_Api.Extensions;
-using DishCraft.Domain.Interfaces;
 using DishCraft.Domain.Model;
 using DishCraft.Infrastructure;
-using DishCraft.Infrastructure.Repositories;
 using DishCraft.Infrastructure.Seed;
 using Microsoft.EntityFrameworkCore;
 using Service.Services;
