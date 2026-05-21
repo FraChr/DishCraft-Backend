@@ -3,6 +3,7 @@ using System;
 using DishCraft.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DishCraft.Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20260521092244_update_Recipe")]
+    partial class update_Recipe
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,31 +76,6 @@ namespace DishCraft.Infrastructure.Migrations
                     b.ToTable("Ingredients");
                 });
 
-            modelBuilder.Entity("DishCraft.Domain.Model.Instruction", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("StepsNumber")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RecipeId");
-
-                    b.ToTable("Instructions");
-                });
-
             modelBuilder.Entity("DishCraft.Domain.Model.Nutrition", b =>
                 {
                     b.Property<int>("Id")
@@ -140,6 +118,10 @@ namespace DishCraft.Infrastructure.Migrations
 
                     b.Property<int>("DifficultyId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Instruction")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -253,17 +235,6 @@ namespace DishCraft.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Units");
-                });
-
-            modelBuilder.Entity("DishCraft.Domain.Model.Instruction", b =>
-                {
-                    b.HasOne("DishCraft.Domain.Model.Recipe", "Recipe")
-                        .WithMany("Instructions")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Recipe");
                 });
 
             modelBuilder.Entity("DishCraft.Domain.Model.Nutrition", b =>
@@ -394,8 +365,6 @@ namespace DishCraft.Infrastructure.Migrations
 
             modelBuilder.Entity("DishCraft.Domain.Model.Recipe", b =>
                 {
-                    b.Navigation("Instructions");
-
                     b.Navigation("RecipeAllergens");
 
                     b.Navigation("RecipeIngredients");

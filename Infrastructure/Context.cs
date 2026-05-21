@@ -11,6 +11,7 @@ public class Context : DbContext
     public DbSet<Difficulty>  Difficulties { get; set; }
     public DbSet<Ingredient> Ingredients { get; set; }
     public DbSet<Nutrition> Nutrition { get; set; }
+    public DbSet<Instruction>  Instructions { get; set; }
     public DbSet<Recipe> Recipes { get; set; }
     public DbSet<RecipeAllergen> RecipeAllergens { get; set; }
     public DbSet<RecipeIngredient> RecipeIngredients { get; set; }

@@ -1,4 +1,5 @@
-﻿using Service.Services;
+﻿using Service.Interfaces;
+using Service.Services;
 
 namespace DishCraft_Api.Extensions;
 
@@ -6,7 +7,7 @@ public static class ServiceExtensions
 {
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
-        services.AddScoped<RecipeService>();
+        services.AddScoped<IRecipeService, RecipeService>();
         return services;
     }
 }

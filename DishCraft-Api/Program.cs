@@ -1,9 +1,9 @@
+using DishCraft_Api.Endpoints;
 using DishCraft_Api.Extensions;
 using DishCraft.Domain.Model;
 using DishCraft.Infrastructure;
 using DishCraft.Infrastructure.Seed;
 using Microsoft.EntityFrameworkCore;
-using Service.Services;
 
 namespace DishCraft_Api;
 
@@ -52,7 +52,7 @@ public class Program
                         Name = "Dish Craft",
                         CreatedAt = DateTime.UtcNow,
                         CreatedBy = "DishCraft",
-                        DifficultyId = 1
+                        DifficultyId = 1,
                     },
                     new Recipe
                     {
@@ -60,6 +60,25 @@ public class Program
                         CreatedAt = DateTime.UtcNow,
                         CreatedBy = "DishCraft",
                         DifficultyId = 2,
+                        
+                        Instructions = new List<Instruction>
+                        {
+                            new()
+                            {
+                                StepsNumber = 1,
+                                Text = "Take steak out of fridge and let it rest"
+                            },
+                            new()
+                            {
+                                StepsNumber = 2,
+                                Text = "Season generously with salt and pepper"
+                            },
+                            new()
+                            {
+                                StepsNumber = 3,
+                                Text = "Sear in the pan for 2-3 minutes per side"
+                            }
+                        },
                         
                         RecipeTags = new List<RecipeTag>
                         {
@@ -79,6 +98,8 @@ public class Program
             }
         }
         
+        RecipeEndpoints.Map(app);
+        
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
@@ -88,23 +109,6 @@ public class Program
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
-
-
-        app.MapGet("/recipes/{id}", async (int id, RecipeService service) =>
-        {
-            var result = await service.GetRecipe(id);
-            
-            return result is null
-                ? Results.NotFound()
-                : Results.Ok(result);
-        });
-
-        app.MapGet("/recipes", async (RecipeService service) =>
-        {
-            var result = await service.GetAllRecipes();
-            
-            return Results.Ok(result);
-        });
         
         app.Run();
     }

@@ -46,6 +46,7 @@ public class RecipeRepository : IRecipeRepository
     {
         return _context.Recipes
             .Include(r => r.Difficulty)
+            .Include(r => r.Instructions)
             .Include(r => r.RecipeTags)
                 .ThenInclude(ra => ra.Tag)
             .Include(r => r.RecipeIngredients)
@@ -53,5 +54,6 @@ public class RecipeRepository : IRecipeRepository
                 .ThenInclude(ra => ra.Allergen)
             .Include(r => r.RecipeNutritions)
                 .ThenInclude(ra => ra.Nutrition);
+
     }
 }

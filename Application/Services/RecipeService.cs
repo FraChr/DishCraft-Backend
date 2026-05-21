@@ -1,10 +1,11 @@
 ﻿using DishCraft.Domain.Interfaces;
 using DishCraft.Domain.Model;
 using Service.Dtos;
+using Service.Interfaces;
 
 namespace Service.Services;
 
-public class RecipeService
+public class RecipeService : IRecipeService
 {
     private readonly IRecipeRepository _repo;
 
@@ -32,6 +33,13 @@ public class RecipeService
         {
             Id = recipe.Id,
             Name = recipe.Name,
+            Instructions = recipe.Instructions
+                .OrderBy(t => t.StepsNumber)
+                .Select(t => new InstructionDto
+                {
+                    StepNumber = t.StepsNumber,
+                    Text = t.Text,
+                }).ToList(),
             Difficulty = recipe.Difficulty.Name,
             Tags = recipe.RecipeTags
                 .Select(t => t.Tag.Name)
@@ -41,7 +49,7 @@ public class RecipeService
                 .ToList(),
             Ingredients = recipe.RecipeIngredients
                 .Select(t => t.Ingredient.Name)
-                .ToList(),
+                .ToList()
         };
     }
 }
