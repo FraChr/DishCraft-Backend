@@ -19,12 +19,18 @@ public class RecipeRepository : IRecipeRepository
         return await BaseRecipeQuery()
             .FirstOrDefaultAsync(r => r.Id == id);
     }
+    public async Task<Recipe> GetBySlugAsync(string slug)
+    {
+        return await BaseRecipeQuery()
+            .FirstOrDefaultAsync(r => r.Slug == slug);
+    }
 
     public async Task<List<Recipe>> GetAllAsync()
     {
         return await BaseRecipeQuery()
             .ToListAsync();
     }
+
 
     public async Task AddAsync(Recipe recipe)
     {

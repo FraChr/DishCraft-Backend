@@ -14,24 +14,30 @@ public class RecipeService : IRecipeService
         _repo = repo;
     }
 
-    public async Task<List<RecipeDto>> GetAllRecipes()
+    public async Task<List<RecipeViewDto>> GetAllRecipes()
     {
         var recipes = await _repo.GetAllAsync();
         return recipes.Select(BaseDto).ToList();
     }
 
-    public async Task<RecipeDto?> GetRecipe(int id)
+    public async Task<RecipeViewDto?> GetRecipe(int id)
     {
         var recipe = await _repo.GetByIdAsync(id);
         return BaseDto(recipe);
     }
 
-
-    private RecipeDto BaseDto(Recipe recipe)
+    public async Task<RecipeViewDto> GetRecipeBySlug(string slug)
     {
-        return new RecipeDto
+        var recipe = await _repo.GetBySlugAsync(slug);
+        return BaseDto(recipe);
+    }
+
+
+    private RecipeViewDto BaseDto(Recipe recipe)
+    {
+        return new RecipeViewDto
         {
-            Id = recipe.Id,
+            /*Id = recipe.Id,*/
             Name = recipe.Name,
             Instructions = recipe.Instructions
                 .OrderBy(t => t.StepsNumber)

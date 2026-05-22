@@ -1,0 +1,50 @@
+﻿[
+  {
+    "Name": "DishCraft",
+    "DifficultyId": 1
+  },
+  {
+    "Name": "Creamy Garlic Chicken Pasta",
+    "DifficultyId": 2,
+    "Tags": ["Dinner", "High Protein", "Comfort Food"],
+    "Allergens": ["Milk", "Gluten"],
+    "Instructions": [
+      {
+        "StepNumber": 1,
+        "Text": "Bring a large pot of salted water to a boil and cook pasta until al dente."
+      },
+      {
+        "StepNumber": 2,
+        "Text": "Season chicken breasts with salt and pepper, then pan-sear in olive oil over medium-high heat until golden and cooked through."
+      },
+      {
+        "StepNumber": 3,
+        "Text": "Remove chicken from the pan and set aside to rest."
+      },
+      {
+        "StepNumber": 4,
+        "Text": "In the same pan, add minced garlic and cook for 30–60 seconds until fragrant."
+      },
+      {
+        "StepNumber": 5,
+        "Text": "Pour in heavy cream and simmer gently, stirring to combine."
+      },
+      {
+        "StepNumber": 6,
+        "Text": "Stir in grated parmesan cheese until the sauce is smooth and creamy."
+      },
+      {
+        "StepNumber": 7,
+        "Text": "Slice the chicken and return it to the sauce."
+      },
+      {
+        "StepNumber": 8,
+        "Text": "Add drained pasta and toss until fully coated in the sauce."
+      },
+      {
+        "StepNumber": 9,
+        "Text": "Serve immediately with extra parmesan and freshly cracked black pepper."
+      }
+    ]
+  }
+]

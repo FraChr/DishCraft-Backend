@@ -5,6 +5,7 @@ namespace Service.Interfaces;
 
 public interface IRecipeService
 {
-    Task<List<RecipeDto>> GetAllRecipes();
-    Task<RecipeDto> GetRecipe(int id);
+    Task<List<RecipeViewDto>> GetAllRecipes();
+    Task<RecipeViewDto> GetRecipe(int id);
+    Task<RecipeViewDto> GetRecipeBySlug(string slug);
 }
