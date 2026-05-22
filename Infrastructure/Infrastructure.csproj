@@ -17,6 +17,9 @@
 	  <Content Include="Seed\*.json">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
+	  <None Update="Seed\**\*">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
     </ItemGroup>
 
     <ItemGroup>

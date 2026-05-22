@@ -36,66 +36,6 @@ public class Program
                 .GetRequiredService<DbSeeder>();
             
             await seeder.SeedAsync();
-
-
-            if (!db.Recipes.Any())
-            {
-                var tag1 = db.Tags.First(t => t.Name == "Dinner");
-                var tag2 = db.Tags.First(t => t.Name == "High Protein");
-                
-                var allergen = db.Allergens.First(a => a.Name == "Mustard");
-                
-                
-                db.Recipes.AddRange(
-                    new Recipe
-                    {
-                        Name = "Dish Craft",
-                        CreatedAt = DateTime.UtcNow,
-                        CreatedBy = "DishCraft",
-                        DifficultyId = 1,
-                    },
-                    new Recipe
-                    {
-                        Name = "Steak",
-                        CreatedAt = DateTime.UtcNow,
-                        CreatedBy = "DishCraft",
-                        DifficultyId = 2,
-                        
-                        Instructions = new List<Instruction>
-                        {
-                            new()
-                            {
-                                StepsNumber = 1,
-                                Text = "Take steak out of fridge and let it rest"
-                            },
-                            new()
-                            {
-                                StepsNumber = 2,
-                                Text = "Season generously with salt and pepper"
-                            },
-                            new()
-                            {
-                                StepsNumber = 3,
-                                Text = "Sear in the pan for 2-3 minutes per side"
-                            }
-                        },
-                        
-                        RecipeTags = new List<RecipeTag>
-                        {
-                            new() { TagId = tag1.Id, },
-                            new() { TagId = tag2.Id, }
-                        },
-                        
-                        RecipeAllergens = new List<RecipeAllergen>
-                        {
-                            new() { AllergenId = allergen.Id, },
-                        },
-                        
-                    }
-                );
-                
-                db.SaveChanges();
-            }
         }
         
         RecipeEndpoints.Map(app);

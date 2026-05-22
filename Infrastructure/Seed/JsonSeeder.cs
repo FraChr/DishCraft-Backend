@@ -18,7 +18,9 @@ public class JsonSeeder
         Func<T, string>? keySelector = null)
         where T : class
     {
-        var json = await File.ReadAllTextAsync(fileName);
+        
+        var path = Path.Combine(AppContext.BaseDirectory, fileName);
+        var json = await File.ReadAllTextAsync(path);
         var items = JsonSerializer.Deserialize<List<T>>(json) ?? [];
 
         if (keySelector == null)
@@ -37,6 +39,5 @@ public class JsonSeeder
             .ToList();
         
         dbSet.AddRange(newItems);
-        await _context.SaveChangesAsync();
     }
 }

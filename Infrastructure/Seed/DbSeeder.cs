@@ -17,7 +17,7 @@ public class DbSeeder
 
     public async Task SeedAsync()
     {
-
+        
         await _seeder.SeedAsync<Unit>(
             "Seed/Units.json",
             _context.Units,
@@ -37,23 +37,24 @@ public class DbSeeder
             "Seed/Tags.json",
             _context.Tags,
             x => x.Name);
+        
+        await _context.SaveChangesAsync();
+        
+        await SeedRecipeAsync();
+        
+        await _context.SaveChangesAsync();
+    }
 
+    private async Task SeedRecipeAsync()
+    {
+        if (await _context.Recipes.AnyAsync())
+            return;
 
-        /*var json = await File.ReadAllTextAsync("Seed/Units.json");
-
-        var data = JsonSerializer.Deserialize<List<Unit>>(json);
-
-        foreach (var item in data)
-        {
-            var existing = await _context.Units
-                .FirstOrDefaultAsync(x => x.Code == item.Code);
-
-            if (existing == null)
-            {
-                _context.Units.Add(item);
-            }
-
-            await _context.SaveChangesAsync();
-        }*/
+        var tagMap = await _context.Tags.ToDictionaryAsync(x => x.Name, x => x.Id);
+        var allergenMap = await _context.Allergens.ToDictionaryAsync(x => x.Name, x => x.Id);
+        
+        var recipes = RecipeSeeder.GetRecipes(tagMap, allergenMap);
+        
+        await _context.Recipes.AddRangeAsync(recipes);
     }
 }
