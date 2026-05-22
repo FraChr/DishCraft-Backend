@@ -1,6 +1,7 @@
 ﻿using DishCraft.Domain.Interfaces;
 using DishCraft.Domain.Model;
 using Microsoft.EntityFrameworkCore;
+using Service.Filters;
 
 namespace DishCraft.Infrastructure.Repositories;
 
@@ -25,10 +26,17 @@ public class RecipeRepository : IRecipeRepository
             .FirstOrDefaultAsync(r => r.Slug == slug);
     }
 
-    public async Task<List<Recipe>> GetAllAsync()
+    public async Task<List<Recipe>> GetFilteredAsync(RecipeRepoFilter repoFilter)
     {
-        return await BaseRecipeQuery()
-            .ToListAsync();
+        var query = BaseRecipeQuery();
+        
+        if(repoFilter.DifficultyId.HasValue)
+            query = query.Where(r => r.DifficultyId == repoFilter.DifficultyId.Value);
+        
+        if(repoFilter.TagId.HasValue)
+            query = query.Where(r => r.RecipeTags.Any(rt => rt.TagId == repoFilter.TagId));
+        
+        return await query.ToListAsync();
     }
 
 

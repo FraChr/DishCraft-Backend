@@ -1,4 +1,5 @@
-﻿using Service.Interfaces;
+﻿using Service.Filters;
+using Service.Interfaces;
 
 namespace DishCraft_Api.Endpoints;
 
@@ -8,10 +9,14 @@ public static class RecipeEndpoints
     {
         var group = app.MapGroup("/recipes");
 
-        group.MapGet("/", async (IRecipeService service) =>
+        group.MapGet("/", async (
+            [AsParameters] RecipeFilter filter,
+            IRecipeService service) =>
         {
-            var result = await service.GetAllRecipes();
+            var result = await service.GetRecipes(filter);
             return Results.Ok(result);
+            /*var result = await service.GetAllRecipes();
+            return Results.Ok(result);*/
         });
 
         group.MapGet("/{id}", async (int id, IRecipeService service) =>

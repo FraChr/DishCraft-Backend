@@ -1,6 +1,7 @@
 ﻿using DishCraft.Domain.Interfaces;
 using DishCraft.Domain.Model;
 using Service.Dtos;
+using Service.Filters;
 using Service.Interfaces;
 
 namespace Service.Services;
@@ -8,15 +9,26 @@ namespace Service.Services;
 public class RecipeService : IRecipeService
 {
     private readonly IRecipeRepository _repo;
+    private readonly ILookupRepository _lookup;
 
-    public RecipeService(IRecipeRepository repo)
+    public RecipeService(IRecipeRepository repo, ILookupRepository lookup)
     {
         _repo = repo;
+        _lookup = lookup;
     }
 
-    public async Task<List<RecipeViewDto>> GetAllRecipes()
+    public async Task<List<RecipeViewDto>> GetRecipes(RecipeFilter filter)
     {
-        var recipes = await _repo.GetAllAsync();
+        var repoFilter = new RecipeRepoFilter();
+        
+        if(!string.IsNullOrWhiteSpace(filter.Difficulty))
+            repoFilter.DifficultyId = await _lookup.GetDifficultyIdByName(filter.Difficulty);
+        
+        if(!string.IsNullOrWhiteSpace(filter.Tag)) 
+            repoFilter.TagId = await _lookup.GetTagIdByName(filter.Tag);
+        
+        var recipes = await _repo.GetFilteredAsync(repoFilter);
+        
         return recipes.Select(BaseDto).ToList();
     }
 
