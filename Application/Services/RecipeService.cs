@@ -51,6 +51,8 @@ public class RecipeService : IRecipeService
         {
             /*Id = recipe.Id,*/
             Name = recipe.Name,
+            CreatedBy =  recipe.CreatedBy,
+            CreatedAt = recipe.CreatedAt,
             Instructions = recipe.Instructions
                 .OrderBy(t => t.StepsNumber)
                 .Select(t => new InstructionDto

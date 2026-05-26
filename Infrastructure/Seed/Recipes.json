@@ -46,5 +46,565 @@
         "Text": "Serve immediately with extra parmesan and freshly cracked black pepper."
       }
     ]
-  }
+  },
+    {
+      "Name": "Spicy Beef Tacos",
+      "DifficultyId": 1,
+      "Tags": ["Dinner", "Beef", "Quick"],
+      "Allergens": ["Gluten", "Milk"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Heat a skillet over medium-high heat and cook ground beef until browned."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Add taco seasoning and a splash of water, then simmer for 5 minutes."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Warm taco shells or tortillas in a dry pan."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Fill tacos with beef, shredded lettuce, diced tomatoes, and cheese."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Serve immediately with sour cream and salsa."
+        }
+      ]
+    },
+    {
+      "Name": "Classic Pancakes",
+      "DifficultyId": 1,
+      "Tags": ["Breakfast", "Vegetarian", "Quick"],
+      "Allergens": ["Gluten", "Milk", "Eggs"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Whisk flour, baking powder, and sugar in a bowl."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Add milk and eggs, then whisk into a smooth batter."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Heat butter in a frying pan over medium heat."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Pour small portions of batter into the pan."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Cook until bubbles form, then flip and cook the other side."
+        }
+      ]
+    },
+    {
+      "Name": "Teriyaki Salmon Bowl",
+      "DifficultyId": 2,
+      "Tags": ["Dinner", "Seafood", "High Protein"],
+      "Allergens": ["Fish", "Soy", "Sesame Seeds"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Cook rice according to package instructions."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Season salmon fillets lightly with salt."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Pan-sear salmon skin-side down until crispy."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Brush teriyaki sauce over the salmon and cook briefly."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Serve salmon over rice with steamed vegetables and sesame seeds."
+        }
+      ]
+    },
+    {
+      "Name": "Vegan Lentil Curry",
+      "DifficultyId": 2,
+      "Tags": ["Dinner", "Vegan", "Comfort Food"],
+      "Allergens": [],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Heat oil in a pot and sauté onion, garlic, and ginger."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Add curry paste and cook until fragrant."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Stir in lentils, coconut milk, and vegetable broth."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Simmer until lentils are tender."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Serve hot with rice and fresh cilantro."
+        }
+      ]
+    },
+    {
+      "Name": "Chicken Caesar Wrap",
+      "DifficultyId": 1,
+      "Tags": ["Lunch", "Chicken", "Quick"],
+      "Allergens": ["Gluten", "Milk", "Eggs"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Cook chicken breast in a skillet until fully cooked."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Slice the chicken into strips."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Toss lettuce with Caesar dressing and parmesan cheese."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Fill tortillas with chicken and lettuce mixture."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Wrap tightly and slice before serving."
+        }
+      ]
+    },
+    {
+      "Name": "Creamy Mushroom Risotto",
+      "DifficultyId": 3,
+      "Tags": ["Dinner", "Vegetarian", "Comfort Food"],
+      "Allergens": ["Milk"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Sauté onions and mushrooms in butter until softened."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Add arborio rice and toast lightly."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Gradually add warm stock while stirring continuously."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Continue adding stock until rice is creamy and tender."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Stir in parmesan cheese before serving."
+        }
+      ]
+    },
+    {
+      "Name": "Garlic Butter Shrimp",
+      "DifficultyId": 1,
+      "Tags": ["Dinner", "Seafood", "Quick"],
+      "Allergens": ["Crustaceans", "Milk"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Melt butter in a large skillet over medium heat."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Add garlic and cook until fragrant."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Add shrimp and cook until pink and opaque."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Season with lemon juice, salt, and parsley."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Serve immediately with rice or bread."
+        }
+      ]
+    },
+    {
+      "Name": "Overnight Oats with Berries",
+      "DifficultyId": 1,
+      "Tags": ["Breakfast", "Vegetarian", "Quick"],
+      "Allergens": ["Milk"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Combine oats, milk, and yogurt in a jar."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Stir in honey and chia seeds."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Top with fresh berries."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Cover and refrigerate overnight."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Serve chilled the next morning."
+        }
+      ]
+    },
+    {
+      "Name": "Beef Stroganoff",
+      "DifficultyId": 2,
+      "Tags": ["Dinner", "Beef", "Comfort Food"],
+      "Allergens": ["Milk", "Gluten"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Cook beef strips in a hot skillet until browned."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Remove beef and sauté onions and mushrooms."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Add beef broth and simmer briefly."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Stir in sour cream and return beef to the pan."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Serve over cooked noodles."
+        }
+      ]
+    },
+    {
+      "Name": "Avocado Toast with Eggs",
+      "DifficultyId": 1,
+      "Tags": ["Breakfast", "Vegetarian", "Quick"],
+      "Allergens": ["Gluten", "Eggs"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Toast slices of bread until golden."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Mash avocado with salt and lemon juice."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Spread avocado mixture on toast."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Fry or poach eggs to preference."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Top toast with eggs and cracked pepper."
+        }
+      ]
+    },
+    {
+      "Name": "Chicken Stir Fry",
+      "DifficultyId": 1,
+      "Tags": ["Dinner", "Chicken", "Quick"],
+      "Allergens": ["Soy", "Sesame Seeds"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Slice chicken breast into thin strips."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Heat oil in a wok over high heat."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Cook chicken until lightly browned."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Add vegetables and stir fry until tender-crisp."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Stir in soy sauce and sesame oil before serving."
+        }
+      ]
+    },
+    {
+      "Name": "Chocolate Brownies",
+      "DifficultyId": 2,
+      "Tags": ["Dessert", "Vegetarian", "Comfort Food"],
+      "Allergens": ["Gluten", "Milk", "Eggs"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Preheat oven to 175 degrees Celsius."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Melt butter and chocolate together."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Whisk eggs and sugar until smooth."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Fold flour into the batter gently."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Bake until the center is slightly fudgy."
+        }
+      ]
+    },
+    {
+      "Name": "Tomato Basil Soup",
+      "DifficultyId": 1,
+      "Tags": ["Lunch", "Vegetarian", "Comfort Food"],
+      "Allergens": ["Milk"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Sauté onions and garlic in olive oil."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Add canned tomatoes and vegetable broth."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Simmer for 20 minutes."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Blend until smooth."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Stir in cream and fresh basil before serving."
+        }
+      ]
+    },
+    {
+      "Name": "Fish Tacos with Lime Slaw",
+      "DifficultyId": 2,
+      "Tags": ["Dinner", "Seafood", "Quick"],
+      "Allergens": ["Fish", "Gluten"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Season white fish with spices and pan-fry until flaky."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Mix shredded cabbage with lime juice and mayonnaise."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Warm tortillas in a skillet."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Fill tortillas with fish and slaw."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Serve with fresh cilantro and lime wedges."
+        }
+      ]
+    },
+    {
+      "Name": "Peanut Noodles",
+      "DifficultyId": 1,
+      "Tags": ["Lunch", "Vegetarian", "Quick"],
+      "Allergens": ["Peanuts", "Soy", "Gluten"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Cook noodles according to package instructions."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Whisk peanut butter, soy sauce, garlic, and lime juice together."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Drain noodles and toss with the sauce."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Top with chopped peanuts and green onions."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Serve warm or chilled."
+        }
+      ]
+    },
+    {
+      "Name": "Classic Cheeseburger",
+      "DifficultyId": 1,
+      "Tags": ["Dinner", "Beef", "Comfort Food"],
+      "Allergens": ["Gluten", "Milk"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Form ground beef into burger patties."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Cook patties in a hot skillet or grill."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Add cheese slices during the last minute of cooking."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Toast burger buns lightly."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Assemble burgers with lettuce, tomato, and sauce."
+        }
+      ]
+    },
+    {
+      "Name": "Vegetable Fried Rice",
+      "DifficultyId": 1,
+      "Tags": ["Lunch", "Vegetarian", "Quick"],
+      "Allergens": ["Soy", "Eggs"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Heat oil in a wok over high heat."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Cook vegetables until slightly softened."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Push vegetables aside and scramble eggs."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Add cooked rice and soy sauce."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Stir fry everything together until hot."
+        }
+      ]
+    },
+    {
+      "Name": "Chicken Alfredo Bake",
+      "DifficultyId": 2,
+      "Tags": ["Dinner", "Chicken", "Comfort Food"],
+      "Allergens": ["Milk", "Gluten"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Cook pasta until slightly underdone."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Mix cooked chicken, pasta, and Alfredo sauce."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Transfer mixture to a baking dish."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Top with mozzarella cheese."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Bake until golden and bubbling."
+        }
+      ]
+    },
+    {
+      "Name": "Berry Yogurt Parfait",
+      "DifficultyId": 1,
+      "Tags": ["Breakfast", "Vegetarian", "Quick"],
+      "Allergens": ["Milk"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Layer yogurt into serving glasses."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Add granola and mixed berries."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Repeat layers until glasses are full."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Drizzle with honey if desired."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Serve immediately."
+        }
+      ]
+    },
+    {
+      "Name": "Seafood Chowder",
+      "DifficultyId": 3,
+      "Tags": ["Dinner", "Seafood", "Comfort Food"],
+      "Allergens": ["Fish", "Crustaceans", "Milk"],
+      "Instructions": [
+        {
+          "StepNumber": 1,
+          "Text": "Cook onions and celery in butter until softened."
+        },
+        {
+          "StepNumber": 2,
+          "Text": "Add diced potatoes and seafood stock."
+        },
+        {
+          "StepNumber": 3,
+          "Text": "Simmer until potatoes are tender."
+        },
+        {
+          "StepNumber": 4,
+          "Text": "Add fish and shrimp, cooking until done."
+        },
+        {
+          "StepNumber": 5,
+          "Text": "Stir in cream and season before serving."
+        }
+      ]
+    }
 ]
