@@ -4,6 +4,6 @@ namespace Service.Interfaces;
 
 public interface ILookupRepository
 {
-    Task<int?> GetTagIdByName(string name);
-    Task<int?> GetDifficultyIdByName(string name);
+    Task<List<int>> GetTagIdByName(IEnumerable<string> names);
+    Task<int> GetDifficultyIdByName(string name);
 }

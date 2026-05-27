@@ -3,5 +3,5 @@
 public class RecipeRepoFilter
 {
     public int? DifficultyId { get; set; }
-    public int? TagId { get; set; }
+    public List<int>? TagIds { get; set; }
 }

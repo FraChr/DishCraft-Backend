@@ -2,7 +2,6 @@
 
 public class RecipeFilter
 {
-    public string? Tag { get; set; }
-    public string? Category { get; set; }
+    public string[]? Tags { get; set; }
     public string? Difficulty { get; set; }
 }

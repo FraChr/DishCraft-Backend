@@ -24,8 +24,11 @@ public class RecipeService : IRecipeService
         if(!string.IsNullOrWhiteSpace(filter.Difficulty))
             repoFilter.DifficultyId = await _lookup.GetDifficultyIdByName(filter.Difficulty);
         
-        if(!string.IsNullOrWhiteSpace(filter.Tag)) 
-            repoFilter.TagId = await _lookup.GetTagIdByName(filter.Tag);
+        
+        if(filter.Tags?.Length > 0)
+        {
+            repoFilter.TagIds = await _lookup.GetTagIdByName(filter.Tags);
+        }
         
         var recipes = await _repo.GetFilteredAsync(repoFilter);
         
@@ -49,10 +52,10 @@ public class RecipeService : IRecipeService
     {
         return new RecipeViewDto
         {
-            /*Id = recipe.Id,*/
             Name = recipe.Name,
             CreatedBy =  recipe.CreatedBy,
             CreatedAt = recipe.CreatedAt,
+            Slug = recipe.Slug,
             Instructions = recipe.Instructions
                 .OrderBy(t => t.StepsNumber)
                 .Select(t => new InstructionDto

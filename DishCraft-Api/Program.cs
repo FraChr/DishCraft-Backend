@@ -1,6 +1,5 @@
 using DishCraft_Api.Endpoints;
 using DishCraft_Api.Extensions;
-using DishCraft.Domain.Model;
 using DishCraft.Infrastructure;
 using DishCraft.Infrastructure.Seed;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +13,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
         
         builder.Services
+            .AddVueCors()
             .AddDatabase(builder.Configuration)
             .AddRepositories()
             .AddServices()
@@ -26,6 +26,8 @@ public class Program
         builder.Services.AddOpenApi();
 
         var app = builder.Build();
+        
+        app.UseCors("AllowVueApp");
 
         using (var scope = app.Services.CreateScope())
         {

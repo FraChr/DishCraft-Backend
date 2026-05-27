@@ -1,8 +1,7 @@
-﻿using DishCraft.Infrastructure;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Service.Interfaces;
 
-namespace Service.Services;
+namespace DishCraft.Infrastructure.Repositories;
 
 public class LookupRepository : ILookupRepository
 {
@@ -13,19 +12,31 @@ public class LookupRepository : ILookupRepository
         _context = context;
     }
     
-    public async Task<int?> GetTagIdByName(string name)
+    public async Task<List<int>> GetTagIdByName(IEnumerable<string> names)
     {
+        var normalized = names
+            .Select(x => x.ToLower())
+            .ToList();
+
         return await _context.Tags
-            .Where(x => x.Name.ToLower() == name.ToLower())
-            .Select(x => (int?)x.Id)
-            .FirstOrDefaultAsync();
+            .Where(x => normalized.Contains(x.Name.ToLower()))
+            .Select(x => x.Id)
+            .ToListAsync();
     }
 
-    public async Task<int?> GetDifficultyIdByName(string name)
+    public async Task<int> GetDifficultyIdByName(string name)
     {
-        return await _context.Difficulties
-            .Where(x => x.Name.ToLower() == name.ToLower())
+        
+        var normalized = name.ToLower();
+        
+        var id = await _context.Difficulties
+            .Where(x => normalized.Contains(x.Name.ToLower()))
             .Select(x => (int?)x.Id)
             .FirstOrDefaultAsync();
+
+        if (id is null)
+            throw new Exception($"Difficulty not found: {name}");
+        
+        return id.Value;
     }
 }

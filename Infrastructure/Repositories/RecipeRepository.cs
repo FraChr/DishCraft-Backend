@@ -32,9 +32,13 @@ public class RecipeRepository : IRecipeRepository
         
         if(repoFilter.DifficultyId.HasValue)
             query = query.Where(r => r.DifficultyId == repoFilter.DifficultyId.Value);
-        
-        if(repoFilter.TagId.HasValue)
-            query = query.Where(r => r.RecipeTags.Any(rt => rt.TagId == repoFilter.TagId));
+
+        if (repoFilter.TagIds?.Any() == true)
+        {
+            query = query.Where(r =>
+                repoFilter.TagIds.All(tagId =>
+                    r.RecipeTags.Any(rt => rt.TagId == tagId)));
+        }
         
         return await query.ToListAsync();
     }
