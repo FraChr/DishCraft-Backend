@@ -13,7 +13,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
         
         builder.Services
-            .AddVueCors()
+            .AddVueCors(builder.Configuration)
             .AddDatabase(builder.Configuration)
             .AddRepositories()
             .AddServices()

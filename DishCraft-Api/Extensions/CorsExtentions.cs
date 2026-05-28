@@ -3,13 +3,18 @@
 public static class CorsExtentions
 {
     public static IServiceCollection AddVueCors(
-        this IServiceCollection services)
+        this IServiceCollection services,
+        IConfiguration config)
     {
+        
+        var allowedOrigins = config.GetSection("Cors:AllowedOrigins")
+            .Get<string[]>() ?? [];
+        
         services.AddCors(options =>
         {
             options.AddPolicy("AllowVueApp", policy =>
             {
-                policy.WithOrigins("http://localhost:8080")
+                policy.WithOrigins(allowedOrigins)
                     .AllowAnyHeader()
                     .AllowAnyMethod();
             });
