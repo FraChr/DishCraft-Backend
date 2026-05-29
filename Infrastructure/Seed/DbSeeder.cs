@@ -50,11 +50,13 @@ public class DbSeeder
     {
         var tagMap = await _context.Tags.ToDictionaryAsync(x => x.Name, x => x.Id);
         var allergenMap = await _context.Allergens.ToDictionaryAsync(x => x.Name, x => x.Id);
+        
+        var existingSlug = new HashSet<string>();
 
         await _seeder.SeedAsync<RecipeSeedDto, Recipe>(
             "Seed/Recipes.json",
             _context.Recipes,
-            dto => MapRecipe(dto, tagMap, allergenMap),
+            dto => MapRecipe(dto, tagMap, allergenMap, existingSlug),
             x => x.Name);
 
     }
@@ -62,12 +64,26 @@ public class DbSeeder
     private Recipe MapRecipe(
         RecipeSeedDto dto,
         Dictionary<string, int> tagMap,
-        Dictionary<string, int> allergenMap)
+        Dictionary<string, int> allergenMap,
+        HashSet<string> existingSlug)
     {
-        return new Recipe
+
+        var baseSlug = SlugGenerator.Slugify(dto.Name);
+        var slug = baseSlug;
+        const int uuidCharLength = 10;
+
+        while (existingSlug.Contains(slug))
+        {
+            slug = $"{baseSlug}-{Guid.NewGuid().ToString()[..uuidCharLength]}";
+        }
+        
+        existingSlug.Add(slug);
+
+    return new Recipe
         {
             Name = dto.Name,
-            Slug = SlugGenerator.Slugify(dto.Name),
+            Uuid = Guid.NewGuid().ToString(),
+            Slug = slug,
             DifficultyId = dto.DifficultyId,
             CreatedAt = DateTime.UtcNow,
             CreatedBy = "DishCraft",

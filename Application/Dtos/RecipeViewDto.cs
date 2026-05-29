@@ -4,6 +4,7 @@ public class RecipeViewDto
 {
     /*public int Id { get; set; }*/
     public string Name { get; set; }
+    public string Uuid { get; set; }
     public string Difficulty { get; set; }
     public string Slug { get; set; }
     public DateTime CreatedAt { get; set; }

@@ -4,6 +4,10 @@
     "DifficultyId": 1
   },
   {
+    "Name": "DishCraft",
+    "DifficultyId": 1
+  },
+  {
     "Name": "Creamy Garlic Chicken Pasta",
     "DifficultyId": 2,
     "Tags": ["Dinner", "High Protein", "Comfort Food"],

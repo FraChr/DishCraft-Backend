@@ -53,6 +53,7 @@ public class RecipeService : IRecipeService
         return new RecipeViewDto
         {
             Name = recipe.Name,
+            Uuid = recipe.Uuid,
             CreatedBy =  recipe.CreatedBy,
             CreatedAt = recipe.CreatedAt,
             Slug = recipe.Slug,
