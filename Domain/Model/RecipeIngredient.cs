@@ -10,5 +10,7 @@ public class RecipeIngredient
 
     public int UnitId { get; set; }
     public Unit Unit { get; set; }
+
+    public decimal Amount { get; set; }
     
 }

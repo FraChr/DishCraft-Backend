@@ -40,6 +40,11 @@ public class DbSeeder
             _context.Difficulties,
             x => x.Name);
         
+        await _seeder.SeedAsync<Ingredient>(
+            "Seed/Ingredients.json",
+            _context.Ingredients,
+            x => x.Name);
+        
         await _seeder.SeedAsync<Tag>(
             "Seed/Tags.json",
             _context.Tags,
@@ -50,13 +55,18 @@ public class DbSeeder
     {
         var tagMap = await _context.Tags.ToDictionaryAsync(x => x.Name, x => x.Id);
         var allergenMap = await _context.Allergens.ToDictionaryAsync(x => x.Name, x => x.Id);
+        var ingredientMap = await _context.Ingredients.ToDictionaryAsync(x => 
+                x.Name, x => x.Id, 
+            StringComparer.OrdinalIgnoreCase);
+        
+        var unitMap = await _context.Units.ToDictionaryAsync(x => x.Code, x => x.Id);
         
         var existingSlug = new HashSet<string>();
 
         await _seeder.SeedAsync<RecipeSeedDto, Recipe>(
             "Seed/Recipes.json",
             _context.Recipes,
-            dto => MapRecipe(dto, tagMap, allergenMap, existingSlug),
+            dto => MapRecipe(dto, tagMap, allergenMap, ingredientMap, unitMap, existingSlug),
             x => x.Name);
 
     }
@@ -65,6 +75,8 @@ public class DbSeeder
         RecipeSeedDto dto,
         Dictionary<string, int> tagMap,
         Dictionary<string, int> allergenMap,
+        Dictionary<string, int> ingredientMap,
+        Dictionary<string, int> unitMap,
         HashSet<string> existingSlug)
     {
 
@@ -92,6 +104,22 @@ public class DbSeeder
             {
                 StepsNumber = i.StepNumber,
                 Text = i.Text
+            }).ToList(),
+            
+            RecipeIngredients = dto.Ingredients.Select(x =>
+            {
+                if(!ingredientMap.TryGetValue(x.Ingredient, out var ingredientId))
+                    throw new InvalidOperationException($"Seed error: Ingredient '{x.Ingredient}' does not exist");
+                
+                if(!unitMap.TryGetValue(x.Unit, out var unitId))
+                    throw new InvalidOperationException($"Seed error: Unit '{x.Unit}' does not exist");
+                
+                return new RecipeIngredient
+                {
+                    IngredientId = ingredientId,
+                    UnitId = unitId,
+                    Amount = x.Amount
+                };
             }).ToList(),
 
             RecipeTags = dto.Tags.Select(x =>

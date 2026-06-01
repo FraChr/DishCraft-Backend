@@ -3,6 +3,7 @@ using System;
 using DishCraft.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DishCraft.Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20260529123639_remove-recipeIngredients-units")]
+    partial class removerecipeIngredientsunits
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -183,10 +186,7 @@ namespace DishCraft.Infrastructure.Migrations
                     b.Property<int>("IngredientId")
                         .HasColumnType("integer");
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("numeric");
-
-                    b.Property<int>("UnitId")
+                    b.Property<int?>("UnitId")
                         .HasColumnType("integer");
 
                     b.HasKey("RecipeId", "IngredientId");
@@ -332,17 +332,13 @@ namespace DishCraft.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DishCraft.Domain.Model.Unit", "Unit")
+                    b.HasOne("DishCraft.Domain.Model.Unit", null)
                         .WithMany("RecipeIngredients")
-                        .HasForeignKey("UnitId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UnitId");
 
                     b.Navigation("Ingredient");
 
                     b.Navigation("Recipe");
-
-                    b.Navigation("Unit");
                 });
 
             modelBuilder.Entity("DishCraft.Domain.Model.RecipeNutrition", b =>

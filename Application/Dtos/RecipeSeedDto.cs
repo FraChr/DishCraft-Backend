@@ -9,4 +9,5 @@ public class RecipeSeedDto
     public List<string> Tags { get; set; } = [];
     public List<string> Allergens { get; set; } = [];
     public List<InstructionDto> Instructions { get; set; } =  [];
+    public List<IngredientDto> Ingredients { get; set; } = [];
 }

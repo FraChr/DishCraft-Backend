@@ -72,8 +72,12 @@ public class RecipeService : IRecipeService
                 .Select(t => t.Allergen.Name)
                 .ToList(),
             Ingredients = recipe.RecipeIngredients
-                .Select(t => t.Ingredient.Name)
-                .ToList()
+                .Select(t => new IngredientDto
+                {
+                    Ingredient = t.Ingredient.Name,
+                    Unit = t.Unit.Code,
+                    Amount = t.Amount
+                }).ToList()
         };
     }
 }

@@ -69,6 +69,8 @@ public class RecipeRepository : IRecipeRepository
                 .ThenInclude(ra => ra.Tag)
             .Include(r => r.RecipeIngredients)
                 .ThenInclude(ri => ri.Ingredient)
+            .Include(r => r.RecipeIngredients)
+                .ThenInclude(ri => ri.Unit)
             .Include(r => r.RecipeAllergens)
                 .ThenInclude(ra => ra.Allergen)
             .Include(r => r.RecipeNutritions)

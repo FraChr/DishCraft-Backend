@@ -12,6 +12,6 @@ public class RecipeViewDto
 
     public List<InstructionDto> Instructions { get; set; }
     public List<string> Tags { get; set; }
-    public List<string> Ingredients { get; set; }
+    public List<IngredientDto> Ingredients { get; set; }
     public List<string> Allergens { get; set; }
 }
