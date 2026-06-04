@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DishCraft.Domain.Model;
+using Microsoft.EntityFrameworkCore;
 using Service.Interfaces;
 
 namespace DishCraft.Infrastructure.Repositories;
@@ -38,5 +39,20 @@ public class LookupRepository : ILookupRepository
             throw new Exception($"Difficulty not found: {name}");
         
         return id.Value;
+    }
+
+    public Task<List<Difficulty>> GetAllDifficultiesAsync()
+    {
+        return _context.Difficulties.ToListAsync();
+    }
+
+    public Task<List<Allergen>> GetAllAllergensAsync()
+    {
+        return  _context.Allergens.ToListAsync();
+    }
+
+    public Task<List<Tag>> GetAllTagsAsync()
+    {
+        return _context.Tags.ToListAsync();
     }
 }

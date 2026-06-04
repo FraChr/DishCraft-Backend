@@ -41,6 +41,7 @@ public class Program
         }
         
         RecipeEndpoints.Map(app);
+        LookupEndpoints.Map(app);
         
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
