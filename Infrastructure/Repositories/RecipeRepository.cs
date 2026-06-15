@@ -39,6 +39,14 @@ public class RecipeRepository : IRecipeRepository
                 repoFilter.TagIds.All(tagId =>
                     r.RecipeTags.Any(rt => rt.TagId == tagId)));
         }
+
+        if (repoFilter.ExcludedAllergenIds?.Any() == true)
+        {
+            var excludedAllergenIds = repoFilter.ExcludedAllergenIds;
+            
+            query = query.Where(x => 
+                !x.RecipeAllergens.Any(xa => excludedAllergenIds.Contains(xa.AllergenId)));
+        }
         
         return await query.ToListAsync();
     }

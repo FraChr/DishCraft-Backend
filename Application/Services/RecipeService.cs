@@ -8,13 +8,13 @@ namespace Service.Services;
 
 public class RecipeService : IRecipeService
 {
-    private readonly IRecipeRepository _repo;
-    private readonly ILookupRepository _lookup;
+    private readonly IRecipeRepository _recipeRepo;
+    private readonly ILookupRepository _lookupRepo;
 
-    public RecipeService(IRecipeRepository repo, ILookupRepository lookup)
+    public RecipeService(IRecipeRepository recipeRepo, ILookupRepository lookupRepo)
     {
-        _repo = repo;
-        _lookup = lookup;
+        _recipeRepo = recipeRepo;
+        _lookupRepo = lookupRepo;
     }
 
     public async Task<List<RecipeViewDto>> GetRecipes(RecipeFilter filter)
@@ -22,28 +22,41 @@ public class RecipeService : IRecipeService
         var repoFilter = new RecipeRepoFilter();
         
         if(!string.IsNullOrWhiteSpace(filter.Difficulty))
-            repoFilter.DifficultyId = await _lookup.GetDifficultyIdByName(filter.Difficulty);
+            repoFilter.DifficultyId = await _lookupRepo.GetDifficultyIdByName(filter.Difficulty);
         
         
         if(filter.Tags?.Length > 0)
         {
-            repoFilter.TagIds = await _lookup.GetTagIdByName(filter.Tags);
+            repoFilter.TagIds = await _lookupRepo.GetTagIdByName(filter.Tags);
         }
         
-        var recipes = await _repo.GetFilteredAsync(repoFilter);
+        if (filter.Allergens?.Length > 0)
+        {
+            /*repoFilter.ExcludedAllergenIds = await _lookupRepo.GetAllergenIdByName(filter.Allergens);*/
+            
+            var allergenIds = await _lookupRepo.GetAllergenIdByName(filter.Allergens);
+            
+            System.Console.WriteLine($"Allergens: {string.Join(", ", filter.Allergens)}");
+            System.Console.WriteLine($"AllergenIds count: {allergenIds.Count}");
+            System.Console.WriteLine($"AllergenIds: {string.Join(", ", allergenIds)}");
+            
+            repoFilter.ExcludedAllergenIds = allergenIds;
+        }
+        
+        var recipes = await _recipeRepo.GetFilteredAsync(repoFilter);
         
         return recipes.Select(BaseDto).ToList();
     }
 
     public async Task<RecipeViewDto?> GetRecipe(int id)
     {
-        var recipe = await _repo.GetByIdAsync(id);
+        var recipe = await _recipeRepo.GetByIdAsync(id);
         return BaseDto(recipe);
     }
 
     public async Task<RecipeViewDto> GetRecipeBySlug(string slug)
     {
-        var recipe = await _repo.GetBySlugAsync(slug);
+        var recipe = await _recipeRepo.GetBySlugAsync(slug);
         return BaseDto(recipe);
     }
 

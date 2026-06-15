@@ -25,6 +25,18 @@ public class LookupRepository : ILookupRepository
             .ToListAsync();
     }
 
+    public async Task<List<int>> GetAllergenIdByName(IEnumerable<string> names)
+    {
+        var normalized = names
+            .Select(x => x.ToLower())
+            .ToList();
+        
+        return await _context.Allergens
+            .Where(x => normalized.Contains(x.Name.ToLower()))
+            .Select(x => x.Id)
+            .ToListAsync();
+    }
+
     public async Task<int> GetDifficultyIdByName(string name)
     {
         
