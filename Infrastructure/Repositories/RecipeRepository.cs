@@ -47,6 +47,13 @@ public class RecipeRepository : IRecipeRepository
             query = query.Where(x => 
                 !x.RecipeAllergens.Any(xa => excludedAllergenIds.Contains(xa.AllergenId)));
         }
+
+        if (!string.IsNullOrWhiteSpace(repoFilter.SearchTerm))
+        {
+            query = query.Where(r =>
+                r.Name.Contains(repoFilter.SearchTerm) ||
+                r.RecipeIngredients.Any(ri => ri.Ingredient.Name.Contains(repoFilter.SearchTerm)));
+        }
         
         return await query.ToListAsync();
     }
