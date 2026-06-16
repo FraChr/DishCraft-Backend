@@ -36,10 +36,6 @@ public class RecipeService : IRecipeService
             
             var allergenIds = await _lookupRepo.GetAllergenIdByName(filter.Allergens);
             
-            System.Console.WriteLine($"Allergens: {string.Join(", ", filter.Allergens)}");
-            System.Console.WriteLine($"AllergenIds count: {allergenIds.Count}");
-            System.Console.WriteLine($"AllergenIds: {string.Join(", ", allergenIds)}");
-            
             repoFilter.ExcludedAllergenIds = allergenIds;
         }
         
