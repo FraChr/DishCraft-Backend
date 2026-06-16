@@ -6,7 +6,6 @@ namespace DishCraft.Domain.Interfaces;
 public interface IRecipeRepository
 {
     Task<Recipe> GetByIdAsync(int id);
-    /*Task<List<Recipe>> GetAllAsync();*/
     Task<Recipe> GetBySlugAsync(string slug);
     Task<List<Recipe>> GetFilteredAsync(RecipeRepoFilter repoFilter);
     

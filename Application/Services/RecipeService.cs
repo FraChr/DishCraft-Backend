@@ -32,11 +32,7 @@ public class RecipeService : IRecipeService
         
         if (filter.Allergens?.Length > 0)
         {
-            /*repoFilter.ExcludedAllergenIds = await _lookupRepo.GetAllergenIdByName(filter.Allergens);*/
-            
-            var allergenIds = await _lookupRepo.GetAllergenIdByName(filter.Allergens);
-            
-            repoFilter.ExcludedAllergenIds = allergenIds;
+            repoFilter.ExcludedAllergenIds = await _lookupRepo.GetAllergenIdByName(filter.Allergens);
         }
         
         var recipes = await _recipeRepo.GetFilteredAsync(repoFilter);
