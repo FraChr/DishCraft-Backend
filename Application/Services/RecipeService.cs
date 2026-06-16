@@ -34,6 +34,12 @@ public class RecipeService : IRecipeService
         {
             repoFilter.ExcludedAllergenIds = await _lookupRepo.GetAllergenIdByName(filter.Allergens);
         }
+
+        if (!string.IsNullOrWhiteSpace(filter.SearchTerm))
+        {
+            var normalizedSearchTerm = filter.SearchTerm.Trim().ToLowerInvariant();
+            repoFilter.SearchTerm = normalizedSearchTerm;
+        }
         
         var recipes = await _recipeRepo.GetFilteredAsync(repoFilter);
         
