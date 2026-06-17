@@ -37,7 +37,7 @@ public class RecipeService : IRecipeService
 
         if (!string.IsNullOrWhiteSpace(filter.SearchTerm))
         {
-            var normalizedSearchTerm = filter.SearchTerm.Trim().ToLowerInvariant();
+            var normalizedSearchTerm = filter.SearchTerm.Trim();
             repoFilter.SearchTerm = normalizedSearchTerm;
         }
         

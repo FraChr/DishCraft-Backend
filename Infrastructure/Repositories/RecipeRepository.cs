@@ -50,9 +50,13 @@ public class RecipeRepository : IRecipeRepository
 
         if (!string.IsNullOrWhiteSpace(repoFilter.SearchTerm))
         {
+
+            var searchTerm = repoFilter.SearchTerm.ToLower();
+            
             query = query.Where(r =>
-                r.Name.Contains(repoFilter.SearchTerm) ||
-                r.RecipeIngredients.Any(ri => ri.Ingredient.Name.Contains(repoFilter.SearchTerm)));
+                r.Name.ToLower().Contains(searchTerm) ||
+                r.RecipeIngredients.Any(ri => 
+                    ri.Ingredient.Name.ToLower().Contains(searchTerm)));
         }
         
         return await query.ToListAsync();

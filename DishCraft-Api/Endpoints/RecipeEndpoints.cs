@@ -23,5 +23,4 @@ public static class RecipeEndpoints
             return Results.Ok(result);
         });
     }
-
 }
